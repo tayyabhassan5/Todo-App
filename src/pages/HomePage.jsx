@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { addTodo } from "../redux/todoSlice";
+import {create} from 'apisauce'
 
 
 const fetchTodo = async () => {
@@ -57,8 +58,8 @@ const HomePage = () => {
 
     return (
         <div className="flex flex-col items-center">
-            <div className="p-2 bg-gray-900 w-[600px] flex flex-col items-center justify-center rounded overflow-hidden shadow-lg italic text-lg font-bold">
-                <div className="items-center text-white">todo list</div>
+            <div className="p-2 bg-gray-900 w-[600px] flex flex-col items-center justify-center rounded overflow-hidden shadow-lg text-lg font-bold">
+                <div className="items-center italic text-white">todo list</div>
                 <div className="flex">
                     <div className="p-2 flex"><CreatePostModal />
                         <button className="p-1 bg-red-500 hover:bg-blue-700 text-white rounded" onClick={handlePending}>Pending tasks</button>
