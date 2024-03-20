@@ -2,27 +2,37 @@ import React, { useEffect } from "react";
 import TodoComponent from "../components/todocomponent";
 import CreatePostModal from "../components/createPostModal";
 import { useQuery } from "react-query";
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import { addTodo } from "../redux/todoSlice";
-import {create} from 'apisauce'
+import { create } from 'apisauce';
 
+const api = create({
+    baseURL:'https://jsonplaceholder.typicode.com',
+});
 
-const fetchTodo = async () => {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
-    const data = response.data.slice(0, 10);
-    return data;
+const fetchTodo = async () => {    
+    try {
+        const response = await api.get('/todos'); 
+        if (response.ok) {
+            const data = response.data.slice(0, 10);
+            return data;
+        } else {
+            throw new Error('Failed to fetch todos');
+        }
+    } catch (error) {
+        console.log("hello Catch")
+        console.error('Error fetching todos:', error);
+        throw error;
+    }
 }
+
 
 const HomePage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    // const completedTasks = useSelector(getCompletedTasks);
-    // console.log("completedTaks",completedTasks);
 
-
-    const { data: todo, error, isLoading } = useQuery("TodoData", fetchTodo);
+    const { data:todo , error, isLoading } = useQuery("TodoData", fetchTodo);
 
     useEffect(() => {
         if (todo) {
@@ -37,9 +47,6 @@ const HomePage = () => {
     }, [todo]);
 
     const todos = useSelector(state => state.todos.todos);
-    // const todos = useSelector(getCompletedTasks);
-    // console.log(todos);
-
 
     const handleCompleted = () => {
         navigate('/completed');
