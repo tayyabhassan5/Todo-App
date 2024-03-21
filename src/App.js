@@ -1,7 +1,6 @@
-import HomePage from './pages/HomePage'
-import CompletedTask from './pages/CompletedTask';
-import PendingTask
- from './pages/PendingTask';
+import HomePage from './pages/HomePage/HomePage';
+import CompletedTask from './pages/CompletedTask/CompletedTask';
+import PendingTask from './pages/PendingTask/PendingTask';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 
 function App() {

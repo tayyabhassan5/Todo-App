@@ -8,7 +8,6 @@ const todoSlice = createSlice({
     reducers: {
         addTodo: (state, action) => {
             const newTodo = action.payload;
-            console.log(action.payload);
             
             const existingTodo = state.todos.find(todo => todo.id === newTodo.id);
             if (!existingTodo) {

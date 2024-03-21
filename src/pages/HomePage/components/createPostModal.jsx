@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FormValidation from '../components/formValidation';
+import FormValidation from '../../../components/formValidation';
 
 const CreatePostModal = () => {
     const [open, setOpen] = useState(false);

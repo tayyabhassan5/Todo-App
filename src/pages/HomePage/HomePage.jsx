@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import TodoComponent from "../components/todocomponent";
-import CreatePostModal from "../components/createPostModal";
+import TodoComponent from "../../components/todocomponent";
+import CreatePostModal from "./components/createPostModal"
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
-import { addTodo } from "../redux/todoSlice";
+import { addTodo } from "../../redux/todoSlice";
 import { create } from 'apisauce';
 
 const api = create({
@@ -14,6 +14,7 @@ const api = create({
 const fetchTodo = async () => {    
     try {
         const response = await api.get('/todos'); 
+        
         if (response.ok) {
             const data = response.data.slice(0, 10);
             return data;
@@ -69,8 +70,8 @@ const HomePage = () => {
                 <div className="items-center italic text-white">todo list</div>
                 <div className="flex">
                     <div className="p-2 flex"><CreatePostModal />
-                        <button className="p-1 bg-red-500 hover:bg-blue-700 text-white rounded" onClick={handlePending}>Pending tasks</button>
-                        <button className="p-1 bg-green-500 hover:bg-blue-700 text-white rounded" onClick={handleCompleted}>Completed Tasks</button>
+                        <button className="p-1 bg-red-500  text-white rounded" onClick={handlePending}>Pending tasks</button>
+                        <button className="p-1 bg-green-500 text-white rounded" onClick={handleCompleted}>Completed Tasks</button>
                     </div>
                 </div>
                 <TodoComponent todos={todos} />
@@ -78,5 +79,4 @@ const HomePage = () => {
         </div>
     );
 };
-
 export default HomePage;
