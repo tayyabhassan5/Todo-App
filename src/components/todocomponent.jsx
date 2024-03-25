@@ -2,9 +2,9 @@ import { useDispatch } from 'react-redux';
 import { toggleComplete, deleteTodo } from "../redux/todoSlice"; 
 
 const TodoComponent = ({ todos }) => {
+    console.log("In Completed Tasks")
     const dispatch = useDispatch();
     
-
     const handleToggleComplete = (id) => {
         dispatch(toggleComplete(id));
     };
@@ -16,11 +16,10 @@ const TodoComponent = ({ todos }) => {
     return (
         <div className="space-y-4">
             {todos.map((item) => (
-                <div key={item.id} className="mx-[500px] flex overflow-hidden justify-between w-[500px] shadow-lg p-2 bg-white rounded-full">
+                <div key={item.id} className="mx-2 md:mx-[500px] flex overflow-hidden justify-between md:w-[500px] w-full shadow-lg p-2 bg-white rounded-full">
                     <div className="p-2 flex flex-col overflow-hidden">
                         <div className="p-2">{item.title}</div>
                     </div>
-
                     <div className="flex items-center gap-2">
                         {!item.completed || item.completed === 'false' ? (
                             <label className="inline-flex items-center cursor-pointer" onClick={() => handleToggleComplete(item.id)}>

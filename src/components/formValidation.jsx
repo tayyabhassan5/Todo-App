@@ -1,4 +1,4 @@
-import ValidationSchema from "../Validation/NewPostValidation";
+import ValidationSchema from "../Validation/ValidationSchema";
 import { Formik, Form, Field } from 'formik';
 import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/todoSlice";
@@ -44,7 +44,7 @@ const FormValidation = () => {
                     <br />
                     {errors.completed && <small className="text-red-600">{errors.completed}</small>}
                     <br />
-                    <button type="submit" className="text-white rounded bg-black p-2">Create New Post</button>
+                    <button type="submit" className="text-white rounded bg-black p-2">Create</button>
                 </Form>
             )}
         </Formik>
