@@ -9,8 +9,6 @@ const CompletedTask = () => {
     console.log(doneTasks);
     const navigate = useNavigate();
 
-   
-
     const handlePending = () => {
         navigate(routes.pending);
     }
@@ -19,6 +17,7 @@ const CompletedTask = () => {
         <>
             <TodoWrapper title="Completed Tasks" handleRouting={handlePending} >
                 <TodoComponent todos={doneTasks} />
+               
             </TodoWrapper>
         </>
 

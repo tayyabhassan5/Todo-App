@@ -2,11 +2,7 @@ import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../redux/todoSlice";
-import { create } from 'apisauce';
-
-const api = create({
-    baseURL: 'https://jsonplaceholder.typicode.com',
-});
+import api from "../utils/api";
 
 const fetchTodo = async () => {
     try {

@@ -11,11 +11,13 @@ const CreatePostModal = () => {
 
     return (
         <div>
-            <button onClick={handleOpen} className="p-1 bg-blue-500 hover:bg-blue-700 text-white rounded">
-                Create Post
+            <button onClick={handleOpen} className="p-2 mb-2 bg-blue-500 hover:bg-blue-700 text-white rounded">
+                Create New Post
             </button>
             <ModalWrapper open={open} handleClose={handleClose}>
+                
                 <FormValidation />
+
             </ModalWrapper>
         </div>
     );
