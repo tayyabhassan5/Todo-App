@@ -1,4 +1,4 @@
-const ModalWrapper = ({ open, handleClose, children }) => {
+const ModalWrapper = ({ open, handleClose, title, children }) => {
     return (
         <>
             {open && (
@@ -17,6 +17,7 @@ const ModalWrapper = ({ open, handleClose, children }) => {
                 </div>
             )}
         </>
+
     );
 };
 
